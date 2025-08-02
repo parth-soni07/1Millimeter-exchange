@@ -1,7 +1,15 @@
 {
-  "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
-    "hardhat": "^2.26.1",
-    "tailwindcss": "^3.4.17"
+  "name": "unite-defi-2",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "install:all": "cd packages/contracts && npm install && cd ../frontend && npm install && cd ../relayer-service && npm install",
+    "build:contracts": "cd packages/contracts && npm run compile",
+    "build:frontend": "cd packages/frontend && npm run build",
+    "start:relayer": "cd packages/relayer-service && npm start",
+    "start:frontend": "cd packages/frontend && npm run dev"
   }
 }
