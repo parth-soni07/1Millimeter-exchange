@@ -18,7 +18,7 @@ const Navbar = () => {
           to="/"
           className="text-white text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent cursor-pointer"
         >
-          Unite DeFi
+          1millimeter Exchange
         </Link>
 
         <div className="flex items-center space-x-4 sm:space-x-8">

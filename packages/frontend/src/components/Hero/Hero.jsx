@@ -75,15 +75,15 @@ const Hero = () => {
           {/* Gradient circle background */}
           <div className="absolute w-96 h-96 bg-gradient-radial from-indigo-600/20 to-transparent rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10"></div>
 
-          {/* Crypto cards */}
+          {/* Feature cards */}
           <div className="relative grid gap-6 p-8 bg-slate-800/50 backdrop-blur-lg rounded-3xl border border-white/10">
-            <div className="flex justify-between items-center p-5 rounded-2xl font-semibold text-white shadow-lg transform hover:-translate-y-1 transition-transform duration-300 bg-gradient-to-br from-orange-500 to-yellow-500">
-              <span className="text-lg">BTC</span>
-              <span className="text-green-400">+5.2%</span>
+            <div className="flex justify-between items-center p-5 rounded-2xl font-semibold text-white shadow-lg transform hover:-translate-y-1 transition-transform duration-300 bg-gradient-to-br from-indigo-500 to-purple-600">
+              <span className="text-lg">ETH ↔ ICP</span>
+              <span className="text-slate-300 text-sm">Cross-Chain</span>
             </div>
-            <div className="flex justify-between items-center p-5 rounded-2xl font-semibold text-white shadow-lg transform hover:-translate-y-1 transition-transform duration-300 bg-gradient-to-br from-blue-500 to-purple-600">
-              <span className="text-lg">ETH</span>
-              <span className="text-green-400">+3.8%</span>
+            <div className="flex justify-between items-center p-5 rounded-2xl font-semibold text-white shadow-lg transform hover:-translate-y-1 transition-transform duration-300 bg-gradient-to-br from-green-500 to-teal-500">
+              <span className="text-lg">Intent&nbsp;Based</span>
+              <span className="text-slate-300 text-sm">1inch Fusion+</span>
             </div>
           </div>
         </div>

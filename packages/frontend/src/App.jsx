@@ -4,7 +4,6 @@ import { Toaster } from "react-hot-toast";
 import { WalletProvider } from "./contexts/WalletContext";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
-import Footer from "./components/Footer/Footer";
 import SwapPage from "./pages/SwapPage";
 import AboutPage from "./pages/AboutPage";
 
@@ -19,7 +18,6 @@ function App() {
             <Route path="/swap" element={<SwapPage />} />
             <Route path="/about" element={<AboutPage />} />
           </Routes>
-          <Footer />
 
           {/* Toast Notifications */}
           <Toaster

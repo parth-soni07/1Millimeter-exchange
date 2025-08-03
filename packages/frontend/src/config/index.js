@@ -108,7 +108,7 @@ export const ICP_CONFIG = {
 
 // Application Settings
 export const APP_CONFIG = {
-  APP_NAME: "Unite DeFi",
+  APP_NAME: "1millimeter Exchange",
   SUPPORTED_TOKENS: {
     ETH: {
       symbol: "ETH",
