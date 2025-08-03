@@ -1,0 +1,292 @@
+# Required Keys and Configuration for ICP Cross-Chain Resolver
+
+This file contains all the keys, APIs, and configuration values needed to deploy and run the ICP cross-chain resolver with 1inch Fusion+.
+
+## 🔐 Ethereum Configuration
+
+### RPC Endpoints
+```bash
+# Mainnet RPC URL (Required for production)
+MAINNET_RPC_URL=https://eth.merkle.io
+# Alternative: https://mainnet.infura.io/v3/2184f26db5a945189b11592133de7526
+# Alternative: https://eth-mainnet.alchemyapi.io/v2/2184f26db5a945189b11592133de7526
+
+# Testnet RPC URLs (Required for testing)
+GOERLI_RPC_URL=https://goerli.infura.io/v3/2184f26db5a945189b11592133de7526
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/2184f26db5a945189b11592133de7526
+
+# Layer 2 Networks (Optional)
+ARBITRUM_RPC_URL=https://arb1.arbitrum.io/rpc
+POLYGON_RPC_URL=https://polygon-rpc.com
+```
+
+### Private Keys
+```bash
+# Deployment private key (⚠️ NEVER commit this to git)
+PRIVATE_KEY=11318539cf2b90cd07feef07bfd119456e16dd18bc8ae1daae2831ff441df48f
+
+# Test private keys (for local testing only)
+TEST_USER_PRIVATE_KEY=0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d
+TEST_RESOLVER_PRIVATE_KEY=0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a
+```
+
+### API Keys for Block Explorers
+```bash
+# Etherscan API Key (for contract verification)
+ETHERSCAN_API_KEY=... # Get from https://etherscan.io/apis
+
+# Alternative block explorer APIs
+ARBISCAN_API_KEY=... # For Arbitrum verification
+POLYGONSCAN_API_KEY=... # For Polygon verification
+```
+
+## 🏗️ Contract Addresses (Set after deployment)
+
+### 1inch Protocol Addresses
+```bash
+# Mainnet 1inch addresses
+LIMIT_ORDER_PROTOCOL_ADDRESS=0x1111111254fb6c44bAC0beD2854e76F90643097d
+ESCROW_FACTORY_ADDRESS=... # Will be provided after escrow factory deployment
+
+# Testnet 1inch addresses (if available)
+TESTNET_LIMIT_ORDER_PROTOCOL_ADDRESS=...
+TESTNET_ESCROW_FACTORY_ADDRESS=...
+```
+
+### Deployed Contract Addresses (Fill after deployment)
+```bash
+# Ethereum contracts (set after running deploy script)
+ICP_BRIDGE_ADDRESS=0x...
+FUSION_RESOLVER_ADDRESS=0x...
+ICP_RESOLVER_ADDRESS=0x...
+
+# Token addresses for testing
+USDC_ADDRESS_MAINNET=0xA0b86a33E6441b8436DF5C6F21a0a4D4C68F7d8A
+USDT_ADDRESS_MAINNET=0xdAC17F958D2ee523a2206206994597C13D831ec7
+WETH_ADDRESS_MAINNET=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+```
+
+## 🌐 ICP Configuration
+
+### ICP Network Settings
+```bash
+# ICP Network host
+ICP_HOST=https://ic0.app
+# Alternative: https://boundary.ic0.app (for better reliability)
+
+# ICP Canister ID (your deployed canister)
+ICP_CANISTER_ID=uxrrr-q7777-77774-qaaaq-cai
+
+# ICP Identity/Seed for relayer service
+ICP_IDENTITY_SEED=cross-chain-relayer-1754133526308-c47be2cd100e327b # Your seed phrase for ICP identity
+# Alternative: Path to identity file
+ICP_IDENTITY_FILE_PATH=~/.config/dfx/identity/default/identity.pem
+```
+
+### ICP Wallet Configuration
+```bash
+# Your ICP principal (for receiving tokens)
+ICP_PRINCIPAL=5efnn-telku-74vvo-k7d22-adlyf-p4kkz-ehcns-3dxsp-s5x5m-okk6e-yae
+
+# Test ICP principals
+TEST_ICP_RECEIVER=rdmx6-jaaaa-aaaah-qcaaw-cai
+TEST_ICP_SENDER=rrkah-fqaaa-aaaaa-aaaaq-cai
+```
+
+## 🔗 Relayer Service Configuration
+
+### Service Settings
+```bash
+# Relayer service name
+RELAYER_NAME=icp-fusion-relayer
+
+# Polling interval (milliseconds)
+POLLING_INTERVAL_MS=5000
+
+# Retry settings
+RETRY_ATTEMPTS=3
+RETRY_DELAY_MS=1000
+
+# Server port
+RELAYER_PORT=3000
+```
+
+### Gas and Fee Settings
+```bash
+# Maximum gas price (in gwei)
+MAX_GAS_PRICE_GWEI=50
+
+# Gas limit for transactions
+GAS_LIMIT=300000
+
+# Safety deposit amounts (in ETH)
+MIN_SAFETY_DEPOSIT_ETH=0.001
+DEFAULT_SAFETY_DEPOSIT_ETH=0.01
+```
+
+## 📊 Monitoring and Alerting
+
+### External Service APIs
+```bash
+# Discord webhook for alerts (optional)
+DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
+
+# Telegram bot for notifications (optional)
+TELEGRAM_BOT_TOKEN=...
+TELEGRAM_CHAT_ID=...
+
+# Email alerts (optional)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+ALERT_EMAIL=alerts@yourdomain.com
+```
+
+### Analytics and Metrics
+```bash
+# Sentry for error tracking (optional)
+SENTRY_DSN=https://...@sentry.io/...
+
+# DataDog for metrics (optional)
+DATADOG_API_KEY=...
+
+# Enable detailed logging
+DEBUG_LOGS=true
+LOG_LEVEL=info
+```
+
+## 🧪 Testing Configuration
+
+### Test Network Settings
+```bash
+# Fork block numbers for testing
+MAINNET_FORK_BLOCK=18500000
+ARBITRUM_FORK_BLOCK=150000000
+
+# Test amounts
+TEST_USDC_AMOUNT=1000000000 # 1000 USDC (6 decimals)
+TEST_ETH_AMOUNT=1000000000000000000 # 1 ETH (18 decimals)
+TEST_ICP_AMOUNT=10000000000 # 100 ICP (8 decimals)
+```
+
+### Test Addresses and Donors
+```bash
+# USDC whale addresses for testing (impersonation)
+USDC_WHALE_MAINNET=0x28C6c06298d514Db089934071355E5743bf21d60
+USDC_WHALE_ARBITRUM=0x62383739D68Dd0F844103Db8dFb05a7EdED5BBE6
+
+# ETH whale addresses
+ETH_WHALE_MAINNET=0xDA9dfA130Df4dE4673b89022EE50ff26f6EA73Cf
+```
+
+## 🏥 Health Check Endpoints
+
+### Service URLs
+```bash
+# Your deployed relayer service
+RELAYER_HEALTH_URL=http://localhost:3000/health
+
+# External dependencies
+ETHEREUM_STATUS_URL=https://status.infura.io/
+ICP_STATUS_URL=https://status.dfinity.org/
+```
+
+## 🔒 Security Configuration
+
+### Access Control
+```bash
+# Admin addresses (can perform emergency functions)
+ADMIN_ADDRESS=0x... # Your admin wallet
+EMERGENCY_ADDRESS=0x... # Emergency multisig address
+
+# Authorized relayers (for production)
+AUTHORIZED_RELAYER_1=0x...
+AUTHORIZED_RELAYER_2=0x...
+
+# Whitelist addresses (if needed)
+WHITELIST_ENABLED=false
+WHITELISTED_ADDRESS_1=0x...
+```
+
+### Rate Limiting
+```bash
+# API rate limits
+MAX_REQUESTS_PER_MINUTE=100
+MAX_SWAPS_PER_HOUR=50
+MAX_AMOUNT_PER_SWAP=10000 # in USD equivalent
+
+# Circuit breaker settings
+MAX_FAILED_TRANSACTIONS=5
+CIRCUIT_BREAKER_TIMEOUT=300000 # 5 minutes
+```
+
+## 📋 How to Use This File
+
+1. **Copy to `.env`**: 
+   ```bash
+   cp required-keys.example .env
+   ```
+
+2. **Fill in your values**: Replace all placeholder values with your actual keys
+
+3. **Secure the file**: 
+   ```bash
+   chmod 600 .env  # Make file readable only by you
+   ```
+
+4. **Never commit**: Ensure `.env` is in your `.gitignore`
+
+## 🚨 Security Warnings
+
+- **NEVER commit private keys to git**
+- **Use separate keys for testnet and mainnet**
+- **Regularly rotate API keys**
+- **Use hardware wallets for production deployments**
+- **Enable 2FA on all service accounts**
+- **Monitor unusual activity on all accounts**
+
+## 📞 Where to Get These Keys
+
+### RPC Providers
+- **Infura**: https://infura.io/
+- **Alchemy**: https://alchemy.com/
+- **QuickNode**: https://quicknode.com/
+
+### Block Explorer APIs
+- **Etherscan**: https://etherscan.io/apis
+- **Arbiscan**: https://arbiscan.io/apis
+- **Polygonscan**: https://polygonscan.com/apis
+
+### ICP Development
+- **DFX CLI**: Install from https://internetcomputer.org/docs/current/developer-docs/setup/install/
+- **ICP Dashboard**: https://dashboard.internetcomputer.org/
+
+### 1inch Integration
+- **1inch Documentation**: https://docs.1inch.io/
+- **1inch Developer Portal**: https://portal.1inch.dev/
+
+## 🔄 Auto-Update Script
+
+You can run this command to automatically update placeholder values:
+
+```bash
+# Create your actual .env file
+cp required-keys.example .env
+
+# Edit with your favorite editor
+nano .env  # or vim .env, or code .env
+```
+
+## ✅ Verification Checklist
+
+Before deployment, ensure you have:
+
+- [ ] All RPC URLs tested and working
+- [ ] Private keys securely generated and funded
+- [ ] API keys obtained and verified
+- [ ] ICP canister deployed and accessible
+- [ ] Test transactions successful on testnet
+- [ ] Monitoring and alerting configured
+- [ ] Security settings reviewed
+- [ ] Backup procedures in place

@@ -1,6 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useWallet } from "../../contexts/WalletContext";
 
 const Hero = () => {
+  const { ethConnected, icpConnected } = useWallet();
+  const bothConnected = ethConnected && icpConnected;
+
   return (
     <section
       className="bg-slate-900 text-white py-24 px-8 min-h-screen flex items-center relative overflow-hidden"
@@ -16,19 +21,53 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
         <div className="max-w-2xl">
           <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight mb-6 bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent">
-            Decentralized Finance for Everyone
+            Cross-Chain DeFi Simplified
           </h1>
-          <p className="text-xl text-slate-300 mb-10 leading-relaxed">
-            Experience the future of finance with our secure and user-friendly
-            DeFi platform. Earn, trade, and grow your crypto assets with ease.
+          <p className="text-xl text-slate-300 mb-6 leading-relaxed">
+            Swap between Ethereum and Internet Computer seamlessly. Powered by
+            1inch Fusion+ for intent-based trading with MEV protection and
+            atomic swaps.
           </p>
+
+          {/* Connection Status */}
+          <div className="mb-8 p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-slate-300">Wallet Status:</span>
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`flex items-center space-x-1 ${ethConnected ? "text-green-400" : "text-slate-400"}`}
+                >
+                  <span>⟠ ETH</span>
+                  <span>{ethConnected ? "✓" : "○"}</span>
+                </div>
+                <div
+                  className={`flex items-center space-x-1 ${icpConnected ? "text-green-400" : "text-slate-400"}`}
+                >
+                  <span>∞ ICP</span>
+                  <span>{icpConnected ? "✓" : "○"}</span>
+                </div>
+              </div>
+            </div>
+            {bothConnected && (
+              <p className="text-green-400 text-xs mt-2">
+                ✨ Ready for cross-chain swaps!
+              </p>
+            )}
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-full text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300">
-              Get Started
-            </button>
-            <button className="px-8 py-3 border-2 border-indigo-600 text-indigo-300 font-semibold rounded-full text-lg hover:bg-indigo-600/10 transform hover:-translate-y-0.5 transition-all duration-300">
+            <Link
+              to="/swap"
+              className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-full text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 text-center"
+            >
+              {bothConnected ? "Start Swapping" : "Connect & Swap"}
+            </Link>
+            <Link
+              to="/about"
+              className="px-8 py-3 border-2 border-indigo-600 text-indigo-300 font-semibold rounded-full text-lg hover:bg-indigo-600/10 transform hover:-translate-y-0.5 transition-all duration-300 text-center"
+            >
               Learn More
-            </button>
+            </Link>
           </div>
         </div>
 
